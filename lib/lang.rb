@@ -11,7 +11,7 @@ LANGUAGES = %w[de-DE
                ru-RU
                uk-UA].freeze
 
-OBJ = [
+LOCALES = [
   'de-DE' => [
     'WaveNet' => %w[
       de-DE-WaveNet-F

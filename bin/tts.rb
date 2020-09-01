@@ -30,12 +30,16 @@ Suomi (Suomi)
 Українська (Україна)'
 
 language = LANGUAGES[gets.strip.to_i]
+puts '--------------------------------'
 puts 'Your choice: ' + language
+puts '--------------------------------'
 
 puts 'WaveNet or Basic? (default WaveNet):'
 tmp = TtsConversion.voice_names(language)
 voice_names_array = tmp[0]
+puts '--------------------------------'
 puts 'Your choice: ' + tmp[1]
+puts '--------------------------------'
 
 puts 'Now select the locale number:'
 voice_names_array.each_with_index do |t, index|
@@ -43,7 +47,9 @@ voice_names_array.each_with_index do |t, index|
 end
 
 voice_name = voice_names_array[gets.strip.to_i]
+puts '--------------------------------'
 puts 'Your choice: ' + voice_name
+puts '--------------------------------'
 
 puts 'TEXT or SSML? default TEXT:'
 markup = TtsConversion.markup(gets.strip)
@@ -53,11 +59,12 @@ puts 'MP3 or WAV? (default MP3):'
 codec = TtsConversion.codec_select(gets.strip)
 puts 'Your choice: ' + codec
 
-doc = File.read('./text.txt')
+doc = File.read('./text_or_ssml.txt')
 puts 'Yout text: ' + doc
 
-puts '--------------------------------'
+puts '***********************************'
 puts 'Text to sound conversion started...'
+puts '***********************************'
 synthesis_input = { markup => doc }
 voice = { language_code: language, name: voice_name }
 audio = { audio_encoding: codec }

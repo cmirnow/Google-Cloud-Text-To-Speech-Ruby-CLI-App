@@ -8,13 +8,13 @@ class TtsConversion
   end
 
   def self.voice_names(x)
-    t = OBJ[0][x][0]
+    t = LOCALES[0][x][0]
     w = 'WaveNet'
     b = 'Basic'
-    if gets.strip.empty?
-      [t[w], w]
-    else
+    if !gets.strip.empty? or x == 'es-ES'
       [t[b], b]
+    else
+      [t[w], w]
     end
   end
 
