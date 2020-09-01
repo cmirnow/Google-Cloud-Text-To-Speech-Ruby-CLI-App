@@ -8,12 +8,13 @@ class TtsConversion
   end
 
   def self.voice_names(x)
+    t = OBJ[0][x][0]
+    w = 'WaveNet'
+    b = 'Basic'
     if gets.strip.empty?
-      puts 'Your choice: WaveNet'
-      OBJ[0][x][0]['WaveNet']
+      [t[w], w]
     else
-      puts 'Your choice: Basic'
-      OBJ[0][x][0]['Basic']
+      [t[b], b]
     end
   end
 

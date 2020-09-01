@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
 if Dir['./*.json'].none?
-  puts 'Key to access API Google Cloud Text-to-Speech was not found in the application directory.'
+  puts 'Key to access API Google Cloud Text-to-Speech was not found.'
   puts 'Exit'
   exit
 end
 
 puts ' '
 puts '********* MASTERPRO.WS PROJECT ***********'
-puts 'Google Cloud Text-to-Speech in Ruby CLI'
-puts '--------------------------------'
+puts 'Google Cloud Text-to-Speech Ruby CLI APP'
+puts '------------------------------------------'
 
 require_relative '../lib/lang.rb'
 require_relative '../lib/tts_conversion.rb'
@@ -33,7 +33,9 @@ language = LANGUAGES[gets.strip.to_i]
 puts 'Your choice: ' + language
 
 puts 'WaveNet or Basic? (default WaveNet):'
-voice_names_array = TtsConversion.voice_names(language)
+tmp = TtsConversion.voice_names(language)
+voice_names_array = tmp[0]
+puts 'Your choice: ' + tmp[1]
 
 puts 'Now select the locale number:'
 voice_names_array.each_with_index do |t, index|
@@ -54,10 +56,12 @@ puts 'Your choice: ' + codec
 doc = File.read('./text.txt')
 puts 'Yout text: ' + doc
 
+puts '--------------------------------'
 puts 'Text to sound conversion started...'
 synthesis_input = { markup => doc }
 voice = { language_code: language, name: voice_name }
 audio = { audio_encoding: codec }
 
 TtsConversion.index(client, synthesis_input, voice, audio, codec)
+puts '--------------------------------'
 puts 'Done'
