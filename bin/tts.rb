@@ -60,7 +60,7 @@ codec = TtsConversion.codec_select(gets.strip)
 puts 'Your choice: ' + codec
 
 doc = File.read('./text_or_ssml.txt')
-puts 'Yout text: ' + doc
+puts 'Your text: ' + doc
 
 puts '***********************************'
 puts 'Text to sound conversion started...'
