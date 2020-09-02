@@ -7,11 +7,25 @@ class TtsConversion
     end
   end
 
+  def self.file_read
+    File.read('./text_or_ssml.txt')
+  end
+
+  def self.total_characters
+    puts 'The length of your content is ' + file_read.size.to_s + ' characters.'
+    if file_read.size > 728
+      puts 'Shorten that text! 5000 characters per request only.'
+      exit
+    else
+      puts 'OK'
+    end
+  end
+
   def self.voice_names(x)
     t = LOCALES[0][x][0]
     w = 'WaveNet'
     b = 'Basic'
-    if !gets.strip.empty? or x == 'es-ES'
+    if !gets.strip.empty? || (x == 'es-ES')
       [t[b], b]
     else
       [t[w], w]

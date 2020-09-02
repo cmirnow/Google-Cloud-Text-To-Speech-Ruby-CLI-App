@@ -11,8 +11,11 @@ puts '********* MASTERPRO.WS PROJECT ***********'
 puts 'Google Cloud Text-to-Speech Ruby CLI APP'
 puts '------------------------------------------'
 
-require_relative '../lib/lang.rb'
 require_relative '../lib/tts_conversion.rb'
+
+TtsConversion.total_characters
+
+require_relative '../lib/lang.rb'
 require 'google/cloud/text_to_speech'
 client = TtsConversion.client(Dir['./*.json'][0])
 
@@ -59,13 +62,12 @@ puts 'MP3 or WAV? (default MP3):'
 codec = TtsConversion.codec_select(gets.strip)
 puts 'Your choice: ' + codec
 
-doc = File.read('./text_or_ssml.txt')
-puts 'Your text: ' + doc
+TtsConversion.total_characters
 
 puts '***********************************'
 puts 'Text to sound conversion started...'
 puts '***********************************'
-synthesis_input = { markup => doc }
+synthesis_input = { markup => TtsConversion.file_read }
 voice = { language_code: language, name: voice_name }
 audio = { audio_encoding: codec }
 
