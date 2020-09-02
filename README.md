@@ -2,7 +2,7 @@
 
 **How to convert text to speech using Google Cloud Text-to-Speech API and Ruby CLI**
 
-![Google Cloud TTS Ruby CLI App](https://masterpro.ws/images/6/cli_tts.gif)
+![Google Cloud TTS Ruby CLI App](https://github.com/cmirnow/Google-Cloud-Text-To-Speech-Ruby-CLI-App/blob/master/pic/cli_tts.gif)
 
 Using the power of Google Cloud Text-to-Speech API and Ruby here is a simple interface to convert text to speech.
 You only need key.json (API access key), put it in the root of this application. And that's really all.
@@ -22,5 +22,3 @@ Languages Google Cloud TTS Ruby CLI App supports:
 - Suomi (Suomi)
 - Русский (Россия)
 - Українська (Україна)
-
-
