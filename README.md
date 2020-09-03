@@ -9,8 +9,6 @@ You only need key.json (API access key), put it in the root of this application.
 
 > This application supports SSML and two conversion formats: MP3 and WAV.
 
-> Attention, you will need to install Ruby and gem 'google-cloud-text_to_speech'.
-
 Languages Google Cloud TTS Ruby CLI App supports:
 - Deutsch (Deutschland)
 - English (United States)
