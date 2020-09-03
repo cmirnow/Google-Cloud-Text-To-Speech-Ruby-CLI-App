@@ -22,3 +22,17 @@ Languages Google Cloud TTS Ruby CLI App supports:
 - Suomi (Suomi)
 - Русский (Россия)
 - Українська (Україна)
+
+**Be careful, the script is made for Linux.**
+
+How to start:
+
+```bash
+gem install google-cloud-text_to_speech
+git clone https://github.com/cmirnow/Google-Cloud-Text-To-Speech-Ruby-CLI-App.git
+cd Google-Cloud-Text-To-Speech-Ruby-CLI-App
+ruby bin/tts.rb
+```
+
+[Description](https://masterpro.ws/google-cloud-text-to-speech-ruby-cli-app) (in Russian).
+
