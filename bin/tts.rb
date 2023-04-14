@@ -11,11 +11,11 @@ puts '********* MASTERPRO.WS PROJECT ***********'
 puts 'Google Cloud Text-to-Speech Ruby CLI APP'
 puts '------------------------------------------'
 
-require_relative '../lib/tts_conversion.rb'
+require_relative '../lib/tts_conversion'
 
 TtsConversion.total_characters
 
-require_relative '../lib/lang.rb'
+require_relative '../lib/lang'
 require 'google/cloud/text_to_speech'
 client = TtsConversion.client(Dir['./*.json'][0])
 
@@ -59,9 +59,9 @@ puts '--------------------------------'
 
 puts 'WaveNet or Basic? (default WaveNet):'
 tmp = TtsConversion.voice_names(language)
-voice_names_array = tmp[0]
+voice_names_array = tmp[1]
 puts '--------------------------------'
-puts 'Your choice: ' + tmp[1]
+puts 'Your choice: ' + tmp[0].to_s
 puts '--------------------------------'
 
 puts 'Now select the locale number:'
@@ -78,7 +78,7 @@ puts 'TEXT or SSML? default TEXT:'
 markup = TtsConversion.markup(gets.strip)
 puts 'Your choice: ' + markup
 
-puts 'MP3 or WAV? (default MP3):'
+puts 'MP3, LINEAR16, OGG_OPUS? (default MP3):'
 codec = TtsConversion.codec_select(gets.strip)
 puts 'Your choice: ' + codec
 

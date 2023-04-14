@@ -220,49 +220,49 @@ LOCALES = [
       en-US-Studio-O
     ]
   ],
-  'es-ES' => %w[
-    'Basic' => [
-    es-ES-Standard-A
-    es-ES-Standard-B
-    es-ES-Standard-C
-    es-ES-Standard-D
+  'es-ES' => [
+    'Basic' => %w[
+      es-ES-Standard-A
+      es-ES-Standard-B
+      es-ES-Standard-C
+      es-ES-Standard-D
     ],
     'WaveNet' => %w[
-    es-ES-WaveNet-B
-    es-ES-WaveNet-C
-    es-ES-WaveNet-D
+      es-ES-WaveNet-B
+      es-ES-WaveNet-C
+      es-ES-WaveNet-D
     ],
     'Neural2' => %w[
-    es-ES-Neural2-A
-    es-ES-Neural2-B
-    es-ES-Neural2-C
-    es-ES-Neural2-D
-    es-ES-Neural2-E
-    es-ES-Neural2-F
+      es-ES-Neural2-A
+      es-ES-Neural2-B
+      es-ES-Neural2-C
+      es-ES-Neural2-D
+      es-ES-Neural2-E
+      es-ES-Neural2-F
     ]
   ],
-  'es-US' => %w[
-    'Basic' => [
-    es-US-Standard-A
-    es-US-Standard-B
-    es-US-Standard-C
+  'es-US' => [
+    'Basic' => %w[
+      es-US-Standard-A
+      es-US-Standard-B
+      es-US-Standard-C
     ],
     'WaveNet' => %w[
-    es-US-WaveNet-A
-    es-US-WaveNet-B
-    es-US-WaveNet-C
-    es-US-News-D
-    es-US-News-E
-    es-US-News-F
-    es-US-News-G
+      es-US-WaveNet-A
+      es-US-WaveNet-B
+      es-US-WaveNet-C
+      es-US-News-D
+      es-US-News-E
+      es-US-News-F
+      es-US-News-G
     ],
     'Neural2' => %w[
-    es-US-Neural2-A
-    es-US-Neural2-B
-    es-US-Neural2-C
+      es-US-Neural2-A
+      es-US-Neural2-B
+      es-US-Neural2-C
     ],
     'Studio' => %w[
-    es-US-Studio-B
+      es-US-Studio-B
     ]
   ],
   'fi-FI' => [

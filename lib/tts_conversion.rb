@@ -12,8 +12,8 @@ class TtsConversion
   end
 
   def self.total_characters
-    puts 'The length of your content is ' + file_read.size.to_s + ' characters.'
-    if file_read.size > 728
+    puts "The length of your content is #{file_read.size} characters."
+    if file_read.size > 5000
       puts 'Shorten that text! 5000 characters per request only.'
       exit
     else
@@ -23,20 +23,22 @@ class TtsConversion
 
   def self.voice_names(x)
     t = LOCALES[0][x][0]
-    w = 'WaveNet'
-    b = 'Basic'
-    if !gets.strip.empty? || (x == 'es-ES')
-      [t[b], b]
-    else
-      [t[w], w]
+    tmp = []
+    t.map.with_index do |q, index|
+      tmp.push(q)
+      puts "#{index} => #{q[0]}"
     end
+    tmp[gets.strip.to_i]
   end
 
   def self.codec_select(x)
     if x.empty?
       'MP3'
+    elsif %w[MP3 LINEAR16 OGG_OPUS].include? x
+      x
     else
-      'LINEAR16'
+      puts "The codec name was entered incorrectly. I'm sorry, but youll have to start over."
+      exit
     end
   end
 
@@ -50,7 +52,7 @@ class TtsConversion
 
   def self.index(*args)
     response = args[0].synthesize_speech input: args[1], voice: args[2], audio_config: args[3]
-    File.open 'output.' + audio_format(args[4]).to_s, 'wb' do |file|
+    File.open "output.#{audio_format(args[4])}", 'wb' do |file|
       file.write response.audio_content
       audio_format(args[4]).to_s
     end
@@ -60,8 +62,10 @@ class TtsConversion
     case codec
     when 'LINEAR16'
       'wav'
+    when 'OGG_OPUS'
+      'ogg'
     else
       'mp3'
-      end
+    end
   end
 end
