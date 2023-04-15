@@ -19,68 +19,36 @@ require_relative '../lib/lang'
 require 'google/cloud/text_to_speech'
 client = TtsConversion.client(Dir['./*.json'][0])
 
-puts 'What language/locale do you want to use? choose between 0-9:
+puts 'What language/locale do you want to use? choose between 0 - 29:'
+TtsConversion.show_all_languages
 
-Arabic (multi-region)
-Български (България)
-Català (Espanya)
-Čeština (Česká republika)
-Dansk (Danmark)
-Deutsch (Deutschland)
-Ελληνικά (Ελλάδα)
-English (Australia)
-English (Great Britain)
-English (India)
-English (United States)
-Español (España)
-Español (US)
-Suomi (Suomi)
-Français (Canada)
-Français (France)
-हिन्दी (भारत)
-Magyar (Magyarország)
-Íslenska (Ísland)
-Italiano (Italia)
-Japanese (Japan)
-Latviešu (latviešu)
-Norsk bokmål (Norge)
-Nederlands (Nederland)
-Polski (Polska)
-Português (Brasil)
-Português (Portugal)
-Română (România)
-Русский (Россия)
-Українська (Україна)'
-
-language = LANGUAGES[gets.strip.to_i]
+language = CODES[gets.strip.to_i]
 puts '--------------------------------'
-puts 'Your choice: ' + language
+puts "Your choice: #{language}"
 puts '--------------------------------'
 
-puts 'WaveNet or Basic? (default WaveNet):'
-tmp = TtsConversion.voice_names(language)
-voice_names_array = tmp[1]
+puts 'Select Voice type:'
+tmp = TtsConversion.select_voice_type(language)
+voice_types_array = tmp[1]
 puts '--------------------------------'
-puts 'Your choice: ' + tmp[0].to_s
+puts "Your choice: #{tmp[0]}"
 puts '--------------------------------'
 
-puts 'Now select the locale number:'
-voice_names_array.each_with_index do |t, index|
-  print index.to_s + ' => ' + t + "\n"
-end
+puts 'Select Voice name:'
+TtsConversion.select_voice_name(voice_types_array)
 
-voice_name = voice_names_array[gets.strip.to_i]
+voice_name = voice_types_array[gets.strip.to_i]
 puts '--------------------------------'
-puts 'Your choice: ' + voice_name
+puts "Your choice: #{voice_name}"
 puts '--------------------------------'
 
 puts 'TEXT or SSML? default TEXT:'
 markup = TtsConversion.markup(gets.strip)
-puts 'Your choice: ' + markup
+puts "Your choice: #{markup}"
 
-puts 'MP3, LINEAR16, OGG_OPUS? (default MP3):'
-codec = TtsConversion.codec_select(gets.strip)
-puts 'Your choice: ' + codec
+puts 'mp3, wav, ogg? (default mp3):'
+codec = TtsConversion.select_codec(gets.strip)
+puts "Your choice: #{codec}"
 
 TtsConversion.total_characters
 

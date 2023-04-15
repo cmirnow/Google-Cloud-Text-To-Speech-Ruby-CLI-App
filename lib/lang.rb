@@ -1,35 +1,68 @@
 # frozen_string_literal: true
 
-LANGUAGES = %w[ar-XA
-               bg-BG
-               ca-ES
-               cs-CZ
-               da-DK
-               de-DE
-               el-GR
-               en-AU
-               en-GB
-               en-IN
-               en-US
-               es-ES
-               es-US
-               fi-FI
-               fr-CA
-               fr-FR
-               hi-IN
-               hu-HU
-               is-IS
-               it-IT
-               ja-JP
-               lv-LV
-               nb-NO
-               nl-NL
-               pl-PL
-               pt-BR
-               pt-PT
-               ro-RO
-               ru-RU
-               uk-UA].freeze
+CODES = %w[ar-XA
+           bg-BG
+           ca-ES
+           cs-CZ
+           da-DK
+           de-DE
+           el-GR
+           en-AU
+           en-GB
+           en-IN
+           en-US
+           es-ES
+           es-US
+           fi-FI
+           fr-CA
+           fr-FR
+           hi-IN
+           hu-HU
+           is-IS
+           it-IT
+           ja-JP
+           lv-LV
+           nb-NO
+           nl-NL
+           pl-PL
+           pt-BR
+           pt-PT
+           ro-RO
+           ru-RU
+           uk-UA].freeze
+
+LANGUAGES_LOCALES = [
+  'Arabic (multi-region)',
+  'Български (България)',
+  'Català (Espanya)',
+  'Čeština (Česká republika)',
+  'Dansk (Danmark)',
+  'Deutsch (Deutschland)',
+  'Ελληνικά (Ελλάδα)',
+  'English (Australia)',
+  'English (Great Britain)',
+  'English (India)',
+  'English (United States)',
+  'Español (España)',
+  'Español (US)',
+  'Suomi (Suomi)',
+  'Français (Canada)',
+  'Français (France)',
+  'हिन्दी (भारत)',
+  'Magyar (Magyarország)',
+  'Íslenska (Ísland)',
+  'Italiano (Italia)',
+  'Japanese (Japan)',
+  'Latviešu (latviešu)',
+  'Norsk bokmål (Norge)',
+  'Nederlands (Nederland)',
+  'Polski (Polska)',
+  'Português (Brasil)',
+  'Português (Portugal)',
+  'Română (România)',
+  'Русский (Россия)',
+  'Українська (Україна)'
+].freeze
 
 LOCALES = [
   'ar-XA' => [
