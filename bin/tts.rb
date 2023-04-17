@@ -22,7 +22,7 @@ client = TtsConversion.client(Dir['./*.json'][0])
 puts 'What language/locale do you want to use? choose between 0 - 29:'
 TtsConversion.show_all_languages
 
-language = CODES[gets.strip.to_i]
+language = TtsConversion.language_selection
 puts '--------------------------------'
 puts "Your choice: #{language}"
 puts '--------------------------------'
@@ -35,9 +35,7 @@ puts "Your choice: #{tmp[0]}"
 puts '--------------------------------'
 
 puts 'Select Voice name:'
-TtsConversion.select_voice_name(voice_types_array)
-
-voice_name = voice_types_array[gets.strip.to_i]
+voice_name = TtsConversion.select_voice_name(voice_types_array)
 puts '--------------------------------'
 puts "Your choice: #{voice_name}"
 puts '--------------------------------'
