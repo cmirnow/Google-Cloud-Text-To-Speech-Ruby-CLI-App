@@ -48,6 +48,14 @@ puts 'mp3, wav, ogg? (default mp3):'
 codec = TtsConversion.select_codec(gets.strip)
 puts "Your choice: #{codec}"
 
+puts 'Optional speaking rate/speed, in the range [0.25, 4.0]. Default 1.0:'
+speaking_rate = TtsConversion.speaking_rate(gets.strip)
+puts "Your choice: #{speaking_rate}"
+
+puts 'Optional speaking pitch, in the range [-20.0, 20.0]. Default 0:'
+pitch = TtsConversion.pitch(gets.strip)
+puts "Your choice: #{pitch}"
+
 TtsConversion.total_characters
 
 puts '***********************************'
@@ -55,8 +63,8 @@ puts 'Text to sound conversion started...'
 puts '***********************************'
 synthesis_input = { markup => TtsConversion.file_read }
 voice = { language_code: language, name: voice_name }
-audio = { audio_encoding: codec }
+audio = { audio_encoding: codec, pitch: pitch, speaking_rate: speaking_rate }
 
-TtsConversion.index(client, synthesis_input, voice, audio, codec)
+TtsConversion.main(client, synthesis_input, voice, audio, codec)
 puts '--------------------------------'
 puts 'Done'

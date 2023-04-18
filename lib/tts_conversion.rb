@@ -116,7 +116,29 @@ class TtsConversion
     end
   end
 
-  def self.index(*args)
+  def self.speaking_rate(x)
+    if x.empty?
+      1.0
+    elsif ((0.25..4.0).include? x.to_f) && (x.to_f.is_a? Float)
+      x.to_f
+    else
+      error_message
+      exit
+    end
+  end
+
+  def self.pitch(x)
+    if x.empty?
+      0.0
+    elsif ((-20.0..20.0).include? x.to_f) && (x.to_f.is_a? Float)
+      x.to_f
+    else
+      error_message
+      exit
+    end
+  end
+
+  def self.main(*args)
     response = args[0].synthesize_speech input: args[1], voice: args[2], audio_config: args[3]
     File.open "output.#{audio_file_type(args[4])}", 'wb' do |file|
       file.write response.audio_content
