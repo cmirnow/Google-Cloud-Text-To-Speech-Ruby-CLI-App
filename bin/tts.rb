@@ -6,20 +6,23 @@ if Dir['./*.json'].none?
   exit
 end
 
+require_relative '../lib/tts_conversion'
+require_relative '../lib/lang'
+require 'google/cloud/text_to_speech'
+
+client = TtsConversion.client(Dir['./*.json'][0])
+
 puts ' '
 puts '********* MASTERPRO.WS PROJECT ***********'
 puts 'Google Cloud Text-to-Speech Ruby CLI APP'
+puts '******************************************'
+puts ' '
 puts '------------------------------------------'
-
-require_relative '../lib/tts_conversion'
-
 TtsConversion.total_characters
-
-require_relative '../lib/lang'
-require 'google/cloud/text_to_speech'
-client = TtsConversion.client(Dir['./*.json'][0])
-
+puts '------------------------------------------'
+puts ' '
 puts 'What language/locale do you want to use? choose between 0 - 29:'
+puts ' '
 TtsConversion.show_all_languages
 
 language = TtsConversion.language_selection
@@ -40,23 +43,30 @@ puts '--------------------------------'
 puts "Your choice: #{voice_name}"
 puts '--------------------------------'
 
-puts 'TEXT or SSML? default TEXT:'
+puts 'TEXT or SSML? (default TEXT):'
 markup = TtsConversion.markup(gets.strip)
+puts '--------------------------------'
 puts "Your choice: #{markup}"
+puts '--------------------------------'
 
 puts 'mp3, wav, ogg? (default mp3):'
 codec = TtsConversion.select_codec(gets.strip)
+puts '--------------------------------'
 puts "Your choice: #{codec}"
+puts '--------------------------------'
 
 puts 'Optional speaking rate/speed, in the range [0.25, 4.0]. Default 1.0:'
 speaking_rate = TtsConversion.speaking_rate(gets.strip)
+puts '--------------------------------'
 puts "Your choice: #{speaking_rate}"
+puts '--------------------------------'
 
 puts 'Optional speaking pitch, in the range [-20.0, 20.0]. Default 0:'
 pitch = TtsConversion.pitch(gets.strip)
+puts '--------------------------------'
 puts "Your choice: #{pitch}"
-
-TtsConversion.total_characters
+puts '--------------------------------'
+puts ' '
 
 puts '***********************************'
 puts 'Text to sound conversion started...'

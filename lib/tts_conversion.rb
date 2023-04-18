@@ -12,12 +12,16 @@ class TtsConversion
   end
 
   def self.total_characters
-    puts "The length of your content is #{file_read.size} characters."
-    if file_read.size > 5000
+    x = file_read.size
+    puts "The length of your content is #{x} characters."
+    if x > 5000
       puts 'Shorten that text! Total bytes per request: 5000.'
       exit
+    elsif x < 3
+      puts 'Place your text in the file "text_or_ssml.txt" and try again.'
+      exit
     else
-      puts 'OK'
+      puts "OK! Let's begin the process of converting text to speech."
     end
   end
 
