@@ -2,7 +2,7 @@
 
 **How to convert text to speech using Google Cloud Text-to-Speech API and Ruby CLI**
 
-![Google Cloud TTS Ruby CLI App](https://github.com/cmirnow/Google-Cloud-Text-To-Speech-Ruby-CLI-App/blob/master/pic/cli_tts.gif)
+<img src="https://github.com/cmirnow/Google-Cloud-Text-To-Speech-Ruby-CLI-App/blob/master/pic/cli_tts.gif" alt="Google Cloud Text-to-Speech Ruby CLI App" width="100%"/>
 
 Using the power of Google Cloud Text-to-Speech API and Ruby here is a simple interface to convert text to speech.
 You only need key.json (API access key), put it in the root of this application. And that's really all.
@@ -50,5 +50,9 @@ How to start:
 gem install google-cloud-text_to_speech
 git clone https://github.com/cmirnow/Google-Cloud-Text-To-Speech-Ruby-CLI-App.git
 cd Google-Cloud-Text-To-Speech-Ruby-CLI-App
+```
+Copy and paste text into the file "text_or_ssml.txt".
+
+```bash
 ruby bin/tts.rb
 ```
