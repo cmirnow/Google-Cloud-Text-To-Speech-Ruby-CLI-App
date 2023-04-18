@@ -81,7 +81,8 @@ class TtsConversion
     puts "The entry was incorrect. I'm sorry, but youll have to start over."
   end
 
-  def self.select_codec(type)
+  def self.select_codec
+    type = gets.strip
     if type.empty? || (%w[mp3 wav ogg].include? type)
       audio_file_format(type)
     else
@@ -112,15 +113,16 @@ class TtsConversion
     end
   end
 
-  def self.markup(x)
-    if x.empty?
+  def self.markup
+    if gets.strip.empty?
       'text'
     else
       'ssml'
     end
   end
 
-  def self.speaking_rate(x)
+  def self.speaking_rate
+    x = gets.strip
     if x.empty?
       1.0
     elsif ((0.25..4.0).include? x.to_f) && (x.to_f.is_a? Float)
@@ -131,7 +133,8 @@ class TtsConversion
     end
   end
 
-  def self.pitch(x)
+  def self.pitch
+    x = gets.strip
     if x.empty?
       0.0
     elsif ((-20.0..20.0).include? x.to_f) && (x.to_f.is_a? Float)

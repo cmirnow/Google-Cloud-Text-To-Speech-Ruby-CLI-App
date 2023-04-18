@@ -43,26 +43,26 @@ puts '--------------------------------'
 puts "Your choice: #{voice_name}"
 puts '--------------------------------'
 
-puts 'TEXT or SSML? (default TEXT):'
-markup = TtsConversion.markup(gets.strip)
+puts 'TEXT or SSML? (default text):'
+markup = TtsConversion.markup
 puts '--------------------------------'
 puts "Your choice: #{markup}"
 puts '--------------------------------'
 
 puts 'mp3, wav, ogg? (default mp3):'
-codec = TtsConversion.select_codec(gets.strip)
+codec = TtsConversion.select_codec
 puts '--------------------------------'
 puts "Your choice: #{codec}"
 puts '--------------------------------'
 
 puts 'Optional speaking rate/speed, in the range [0.25, 4.0]. Default 1.0:'
-speaking_rate = TtsConversion.speaking_rate(gets.strip)
+speaking_rate = TtsConversion.speaking_rate
 puts '--------------------------------'
 puts "Your choice: #{speaking_rate}"
 puts '--------------------------------'
 
 puts 'Optional speaking pitch, in the range [-20.0, 20.0]. Default 0:'
-pitch = TtsConversion.pitch(gets.strip)
+pitch = TtsConversion.pitch
 puts '--------------------------------'
 puts "Your choice: #{pitch}"
 puts '--------------------------------'
