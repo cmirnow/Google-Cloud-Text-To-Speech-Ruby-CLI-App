@@ -32,7 +32,7 @@ class TtsConversion
   end
 
   def self.language_selection
-    prompt.select('What language/locale do you want to use?', LANGUAGES_LOCALES)
+    prompt.select('What language/locale do you want to use?', LANGUAGES_LOCALES, per_page: 30)
   end
 
   def self.language_code_find(language)
@@ -44,7 +44,7 @@ class TtsConversion
   end
 
   def self.select_voice_name(voice_type)
-    prompt.select('Choose voice name?', voice_type)
+    prompt.select('Choose voice name?', voice_type, per_page: 15)
   end
 
   def self.select_codec
@@ -80,7 +80,8 @@ class TtsConversion
   def self.speaking_rate
     prompt.ask(
       'Optional speaking rate/speed, in the range [0.25, 4.0]',
-      default: '1.0'
+      default: '1.0',
+      convert: :float
     ) do |q|
       q.in('0.25-4.0')
     end
@@ -89,7 +90,8 @@ class TtsConversion
   def self.pitch
     prompt.ask(
       'Optional speaking pitch, in the range [-20.0, 20.0].',
-      default: '0'
+      default: '0',
+      convert: :float
     ) do |q|
       q.in('-20.0-20.0')
     end

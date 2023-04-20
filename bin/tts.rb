@@ -26,8 +26,8 @@ voice_type = TtsConversion.select_voice_type(language_code)
 voice_name = TtsConversion.select_voice_name(LOCALES[0][language_code][0][voice_type])
 markup = TtsConversion.markup
 codec = TtsConversion.select_codec
-speaking_rate = TtsConversion.speaking_rate.to_f
-pitch = TtsConversion.pitch.to_f
+speaking_rate = TtsConversion.speaking_rate
+pitch = TtsConversion.pitch
 
 puts ' '
 puts '***********************************'
