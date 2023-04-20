@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'tty-prompt'
+
 class TtsConversion
   def self.client(x)
     client = Google::Cloud::TextToSpeech.text_to_speech do |config|
@@ -25,70 +27,28 @@ class TtsConversion
     end
   end
 
-  def self.show_all_languages
-    LANGUAGES_LOCALES.map.with_index { |q, index| puts "#{index} => #{q}" }
+  def self.prompt
+    TTY::Prompt.new
   end
 
   def self.language_selection
-    input = gets.strip
-    if (0..29).map(&:to_s).include? input
-      CODES[input.to_i]
-    else
-      error_message
-      exit
-    end
+    prompt.select('What language/locale do you want to use?', LANGUAGES_LOCALES)
   end
 
-  def self.select_voice_type(lang)
-    locales = LOCALES[0][lang][0]
-    hash_locales = Hash[locales.each_with_index.map { |value, index| [index, value] }]
-    puts hash_locales.map.with_index { |lang, index| "#{index} => #{lang[1][0]}" }
-    foolproof(hash_locales)
+  def self.language_code_find(language)
+    CODES[LANGUAGES_LOCALES.find_index(language)]
   end
 
-  def self.foolproof(hash_locales)
-    input = gets.strip
-    if hash_locales.keys.map(&:to_s).include? input
-      hash_locales[input.to_i]
-    else
-      error_message
-      exit
-    end
+  def self.select_voice_type(language)
+    prompt.select('Choose voice type?', LOCALES[0][language][0].keys)
   end
 
-  def self.select_voice_name(voice_types_array)
-    voice_types_array.each_with_index do |t, index|
-      print "#{index} => #{t}\n"
-    end
-    foolproof1(voice_types_array)
-  end
-
-  def self.foolproof1(voice_types_array)
-    input = gets.strip
-    keys_voice_types_hash = Hash[voice_types_array.each_with_index.map do |value, index|
-                                   [index, value]
-                                 end
- ].keys
-    if keys_voice_types_hash.map(&:to_s).include? input
-      voice_types_array[input.to_i]
-    else
-      error_message
-      exit
-    end
-  end
-
-  def self.error_message
-    puts "The entry was incorrect. I'm sorry, but youll have to start over."
+  def self.select_voice_name(voice_type)
+    prompt.select('Choose voice name?', voice_type)
   end
 
   def self.select_codec
-    type = gets.strip
-    if type.empty? || (%w[mp3 wav ogg].include? type)
-      audio_file_format(type)
-    else
-      error_message
-      exit
-    end
+    audio_file_format(prompt.select('mp3, wav, ogg?', %w[mp3 wav ogg]))
   end
 
   def self.audio_file_format(type)
@@ -114,34 +74,24 @@ class TtsConversion
   end
 
   def self.markup
-    if gets.strip.empty?
-      'text'
-    else
-      'ssml'
-    end
+    prompt.select('TEXT or SSML?', %w[text ssml])
   end
 
   def self.speaking_rate
-    x = gets.strip
-    if x.empty?
-      1.0
-    elsif ((0.25..4.0).include? x.to_f) && (x.to_f.is_a? Float)
-      x.to_f
-    else
-      error_message
-      exit
+    prompt.ask(
+      'Optional speaking rate/speed, in the range [0.25, 4.0]',
+      default: '1.0'
+    ) do |q|
+      q.in('0.25-4.0')
     end
   end
 
   def self.pitch
-    x = gets.strip
-    if x.empty?
-      0.0
-    elsif ((-20.0..20.0).include? x.to_f) && (x.to_f.is_a? Float)
-      x.to_f
-    else
-      error_message
-      exit
+    prompt.ask(
+      'Optional speaking pitch, in the range [-20.0, 20.0].',
+      default: '0'
+    ) do |q|
+      q.in('-20.0-20.0')
     end
   end
 

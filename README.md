@@ -17,7 +17,7 @@ You only need key.json (API access key), put it in the root of this application.
 How to start:
 
 ```bash
-gem install google-cloud-text_to_speech
+gem install google-cloud-text_to_speech tty-prompt
 git clone https://github.com/cmirnow/Google-Cloud-Text-To-Speech-Ruby-CLI-App.git
 cd Google-Cloud-Text-To-Speech-Ruby-CLI-App
 ```
