@@ -31,7 +31,7 @@ pitch = TtsConversion.pitch
 
 puts ' '
 puts '***********************************'
-puts 'Text to sound conversion started...'
+puts 'Text-to-Speech conversion started...'
 puts '***********************************'
 
 synthesis_input = { markup => TtsConversion.file_read }
